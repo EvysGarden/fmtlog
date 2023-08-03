@@ -23,8 +23,10 @@
         '';
         installPhase = ''
           mkdir -p $out/lib/
-          cp ./libfmtlog-shared.so $out/lib/libfmtlog-shared.so
-          cp ./libfmtlog-static.a $out/lib/libfmtlog-shared.a
+          cp ./fmtlog.h $out/include/
+          cp ./fmtlog-inl.h $out/include/
+          cp ./libfmtlog-shared.so $out/lib/
+          cp ./libfmtlog-static.a $out/lib/
         '';
       };
     };

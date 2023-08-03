@@ -16,17 +16,25 @@
           fmt
           cmake
         ];
-        src = self;
-        buildPhase = ''
+        src = ./.;
+        configurePhase = ''
+          runHook preConfigure
           cmake .
+          runHook postConfigure
+        '';
+        buildPhase = ''
+          runHook preBuild
           cmake --build .
+          runHook postBuild
         '';
         installPhase = ''
-          mkdir -p $out/lib/
+          runHook preInstall
+          mkdir -p $out/lib/ $out/include/
           cp ./fmtlog.h $out/include/
           cp ./fmtlog-inl.h $out/include/
           cp ./libfmtlog-shared.so $out/lib/
           cp ./libfmtlog-static.a $out/lib/
+          runHook postInstall
         '';
       };
     };

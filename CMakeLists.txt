@@ -27,5 +27,4 @@ if(MSVC)
 endif()
 install(TARGETS fmtlog-static)
 
-add_subdirectory(fmt)
 add_subdirectory(test)
